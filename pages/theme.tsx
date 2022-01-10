@@ -14,11 +14,15 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   console.log("Host: ", host);
 
   //Placeholder that will be replaced in the near future with the actual theme
-  const theme = themeDecider(host || "ONE");
+  //const theme = themeDecider(host || "ONE");
+
+  const theme = ["ONE", "TWO"];
+
+  const random = Math.floor(Math.random() * theme.length);
 
   return {
     props: {
-      theme,
+      theme: theme[random],
       host,
     }, // will be passed to the page component as props
   };
@@ -31,7 +35,7 @@ const Theme: NextPage<Theme> = ({ theme, host }) => {
     case "ONE":
       return <OneImovel />;
 
-    case "next-theme-poc-r25hoqqnm-paulo-steinberg.vercel.app":
+    case "TWO":
       return <TwoImovel />;
     default:
       break;
