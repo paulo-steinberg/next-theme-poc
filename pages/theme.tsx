@@ -5,6 +5,7 @@ import { TwoImovel } from "../themes/two/imovel";
 
 interface Theme {
   theme: string;
+  host: string;
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
@@ -18,16 +19,19 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   return {
     props: {
       theme,
+      host,
     }, // will be passed to the page component as props
   };
 };
 
-const Theme: NextPage<Theme> = ({ theme }) => {
+const Theme: NextPage<Theme> = ({ theme, host }) => {
+  //It will be nice in the future to maybe have a safer way to do this switch
+  //Maybe using consts so I wont have to write strings every time.
   switch (theme) {
     case "ONE":
       return <OneImovel />;
 
-    case "TWO":
+    case "next-theme-poc-r25hoqqnm-paulo-steinberg.vercel.app":
       return <TwoImovel />;
     default:
       break;
