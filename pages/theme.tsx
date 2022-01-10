@@ -12,7 +12,8 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
   console.log("Host: ", host);
 
-  const theme = themeDecider(host);
+  //Placeholder that will be replaced in the near future with the actual theme
+  const theme = themeDecider(host || "ONE");
 
   return {
     props: {
